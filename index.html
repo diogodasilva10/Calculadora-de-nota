@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="form">
+        
+    <form id="gradeForm">
+        <label for="grade1">1 trimestre:</label>
+        <input type="number" id="grade1" required><br><br>
+        <label for="grade2">2 trimestre:</label>
+        <input type="number" id="grade2"  required><br><br>
+        <label for="grade3">3 trimestre:</label>
+        <input type="number" id="grade3" required><br><br>
+        <button onclick="calculateAverage()" type="button">Calcular Média</button>
+        <button onclick="resetForm()" type="button">Limpar</button>
+        <output id="output"></output>
+    </form>
+    </div>
+        <script> 
+        // primeiro criar as variáveis
+           const grade1 = document.getElementById('grade1'); 
+           const grade2 = document.getElementById('grade2');
+           const grade3 = document.getElementById('grade3');  
+           const output = document.getElementById('output');  
+           // depois criar a função
+           function calculateAverage(){
+
+            let g1 = parseFloat(grade1.value);  
+            let g2 = parseFloat(grade2.value);
+            let g3 = parseFloat(grade3.value);  
+
+            let media = (g1 + g2 + g3) / 3; // para calcular a média
+            resetForm();
+            output.innerHTML = `A media é: ${media}`; // para mostrar a média
+
+            if(media >= 6){
+                output.innerHTML += '<br>Aprovado';
+                 // o if e else para aprovação ou reprovação
+                 output.style.color = "green";
+            }else{
+                output.innerHTML += '<br>Reprovado';
+                 output.style.color = "red";
+            }
+            // fim da função
+           }  
+           function resetForm(){
+            grade1.value = '';
+            grade2.value = '';
+            grade3.value = '';
+            output.innerHTML = '';
+           } 
+           
+        </script>
+</body>
+</html>
